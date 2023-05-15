@@ -18,6 +18,13 @@ Review.init(
         content: {
             type: DataTypes.TEXT,
             allowNull: false,
+        },
+        username: {
+            type: DataTypes.STRING,
+            references: {
+                model: 'user',
+                key: 'username'
+            }
         }
     },
     {
@@ -28,4 +35,4 @@ Review.init(
     }
 );
 
-module.exports = { Review };
+module.exports = Review;
