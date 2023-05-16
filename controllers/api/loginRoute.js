@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { emitWarning } = require("process");
-const {User} = require("../../models");
+// const {User} = require("../../models");
 
 router.get("/login", (req, res) => {
     console.log("hELLO FROM THE USER LOGIN");
