@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    {{#each reviews as |review|}}
+    <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src={{review.imgURL}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{review.title}}</h5>
+                <p class="card-text">{{review.content}}</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

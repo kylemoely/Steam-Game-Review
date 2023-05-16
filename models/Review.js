@@ -25,6 +25,10 @@ Review.init(
                 model: 'user',
                 key: 'username'
             }
+        },
+        imgURL: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {
