@@ -6,7 +6,7 @@ const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const hbs = exphbs.create({});
 const routes = require('./controllers');
-
+//const models = require('./models');
 const PORT = process.env.PORT || 3021;
 const app = express();
 
