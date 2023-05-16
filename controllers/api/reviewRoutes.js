@@ -11,4 +11,24 @@ router.get('/:title', async (req, res) => {
   }
 });
 
+router.post('/:title', async (req, res) => {
+  try {
+    const { title } = req.params;
+    const { content, username, imgUrl } = req.body;
+
+    const reviewData = await Review.create({
+      title,
+      content,
+      username,
+      imgUrl,
+    });
+
+    res.status(200).json(reviewData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 module.exports = router;
