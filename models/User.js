@@ -14,9 +14,9 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            primaryKey:true,
+            primaryKey: true,
             validate: {
-                isAlphanumeric:true,
+                isAlphanumeric: true,
                 len: [5,16],
             }
         },
