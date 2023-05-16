@@ -28,8 +28,7 @@ Review.init(
         },
         imgURL: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: ''
+            allowNull: true,
         }
     },
     {

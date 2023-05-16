@@ -22,8 +22,7 @@ User.init(
         },
         password: {
             type:DataTypes.STRING,
-            allowNull:false,
-            defaultValue: '',
+            allowNull:true,
             validate: {
                 len:[6,20],
             }
