@@ -1,3 +1,11 @@
+#login-btn {
+    text-decoration: none;
+}
+
+#signup-btn {
+    text-decoration: none;
+}
+
 .recentSearch{
     background-color: rgb(226, 226, 226);
     margin:2px 0px;
