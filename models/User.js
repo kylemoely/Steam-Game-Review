@@ -18,22 +18,22 @@ User.init(
             validate: {
                 isAlphanumeric:true,
                 len: [5,16],
-            }
+            },
         },
         password: {
-            type:DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull:false,
             validate: {
                 len:[6,20],
-            }
-        }
+            },
+        },
     },
     {
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
-            }
+            },
         },
         sequelize,
         timestamps:false,

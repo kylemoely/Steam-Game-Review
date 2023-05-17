@@ -10,10 +10,10 @@ router.get("/login", (req, res) => {
 
 })
 
-router.post("/login", (req, res) => {
-    
+router.post("/login", async (req, res) => {
+    const userData = await User.create(req.body);
 
-    
+    res.json("DONE")
 })
 
 module.exports = router;

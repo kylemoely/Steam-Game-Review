@@ -23,19 +23,20 @@ Review.init(
             type: DataTypes.STRING,
             references: {
                 model: 'user',
-                key: 'username'
+                key: 'username',
             }
         },
         imgURL: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
+            defaultValue: '',
         }
     },
     {
         sequelize,
         timestamps: true,
         freezeTableName: true,
-        modelName: 'review'
+        modelName: 'review',
     }
 );
 

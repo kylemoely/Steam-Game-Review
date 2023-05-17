@@ -1,23 +1,34 @@
 const router = require('express').Router();
-const {User} = require("../../models");
-// localhost:3021/users
-router.get('/', (req, res) => {
-    console.log('Welcome User');
-res.json('From userRoutes.js');
+const {Review} = require("../../models");
+// localhost:3021/users/:username
+router.get('/:username', async (req, res) => {
+  try {
+    const reviewData = await Review.findAll({where:{username:req.params.username}});
+
+    res.status(200).render("user", {reviewData})
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
 })
+// localhost:3021/users/
+router.post('/:username', async (req,res) => {
+    try {
+        const {username} = req.params;
+        const {title, content, imgURL} = req.body;
+        const reviewData = await Review.create({
+            title,
+            content,
+            username,
+            imgURL,
+        });
 
-router.post('/post-review', async (req,res) => {
-    //async and await in case its not instant
-// res.json('oh boy')
-//object destructuring
-// username below aliased to UserInputUsername; use colon, like variable declaration
-    const { username:UserInputUsername, password:UserInputPassword } = req.body;
-    const userData = await User.create({
-        username: UserInputUsername, 
-        password: UserInputPassword
-    });
+        res.status(200).json(reviewData);
+    } catch(err) {
+        res.status(500).json(err);
+    }
 
-    res.json(userData);
+    
 })
 
 module.exports = router;
