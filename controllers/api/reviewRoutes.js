@@ -1,34 +1,35 @@
 const router = require("express").Router();
-const { Review, User } = require('../../models');
+const { Review } = require('../../models');
 
 router.get('/:title', async (req, res) => {
   try {
-    const reviewData = await Review.findAll();
+    const reviewData = await Review.findAll({
+      order: [['createdAt', 'DESC']]
+    });
 
-    res.status(200).json(reviewData);
+    const reviews = reviewData.map(review => review.get({ plain: true }));
+    
+    res.render('review', { reviews });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+
 router.post('/:title', async (req, res) => {
   try {
-    const { title } = req.params;
-    const { content, username, imgURL } = req.body;
-
+    const { title, content, username, imgURL } = req.body;
+    console.log(req.body)
     const reviewData = await Review.create({
       title,
       content,
       username,
       imgURL,
     });
-
     res.status(200).json(reviewData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
 
 module.exports = router;

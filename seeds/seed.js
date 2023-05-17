@@ -5,7 +5,7 @@ const reviewData = require('./reviewData.json');
 const userData = require('./userData.json');
 
 const seedDatabase = async () => {
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ force: true });
 
   try {
     await User.bulkCreate(userData);
