@@ -11,8 +11,8 @@ const seedDatabase = async () => {
     await User.bulkCreate(userData);
     await Review.bulkCreate(reviewData);
     console.log('Seed data inserted successfully.');
-  } catch (error) {
-    console.error('Error inserting seed data:', error);
+  } catch (err) {
+    console.error('Error inserting seed data:', err);
   }
 
   process.exit(0);
