@@ -7,7 +7,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const hbs = exphbs.create({});
 const routes = require('./controllers');
 
-const PORT = process.env.PORT || 3021;
+const PORT = process.env.PORT || 3040;
 const app = express();
 
 const sess = {
@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(routes);
 
 
-sequelize.sync({force:true}).then(() => {
+sequelize.sync({force:false}).then(() => {
     app.listen(PORT, () => console.log(`Now listening at localhost:${PORT}`));
     console.log(PORT);
 })
