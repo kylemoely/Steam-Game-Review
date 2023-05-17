@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Review } = require('../../models');
 
+// localhost:3021/reviews/:title
 router.get('/:title', async (req, res) => {
   try {
     const reviewData = await Review.findAll({

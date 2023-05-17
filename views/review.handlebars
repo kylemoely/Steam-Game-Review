@@ -1,44 +1,59 @@
 {{#if reviews.length}}
-<table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th>Users</th>
-      <th>Reviews</th>
-      <th>Date created</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each reviews as |review|}}
-    <tr>
-      <td>
-        <div class="d-flex align-items-center">
-          <img
-              src= {{review.imgURL}}
-              alt=""
-              style=""
-              class=""
-              />
-          <div class="ms-3">
-            <p class="fw-bold mb-1">{{review.username}}</p>
+<div class="container">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px; margin-bottom: 20px;">
+    <a class="btn text-white" style="background-color: #55acee;" role="button">
+      <i class="fas fa-plus me-2"></i>
+      Write a review
+    </a>
+  </div>
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Users</th>
+        <th>Reviews</th>
+        <th>Rating</th>
+        <th>Date created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reviews as |review|}}
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                src= {{review.imgURL}}
+                alt=""
+                style=""
+                class=""
+                />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{review.username}}</p>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">{{review.content}}</p>
-      </td>
-      <td>
-        <span class="fw-normal mb-1">{{ format_date review.createdAt}}</span>
-      </td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Edit
-        </button>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{review.content}}</p>
+        </td>
+        <td>
+          
+        </td>
+        <td>
+          <span class="fw-normal mb-1">{{ format_date review.createdAt}}</span>
+        </td>
+        <td>
+          <a style="color: green; margin-right: 10px;" role="button">
+            <i class="fas fa-pen"></i>
+          </a>
+          <a style="color: red;" role="button">
+            <i class="far fa-trash-can"></i>
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
 {{else}}
   <p>No reviews found.</p>
 {{/if}}
