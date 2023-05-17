@@ -4,7 +4,7 @@ const {Review} = require("../../models");
 router.get('/:username', async (req, res) => {
   try {
     const reviewData = await Review.findAll({where:{username:req.params.username}});
-
+    console.log(reviewData)
     res.status(200).render("user", {reviewData})
   } catch (err) {
     res.status(500).json(err);
