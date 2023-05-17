@@ -6,10 +6,26 @@
             <img class="card-img-top" src={{review.imgURL}} alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{review.title}}</h5>
+                <h6 class="card-text">Reviewed by: {{review.username}}</h6>
                 <p class="card-text">{{review.content}}</p>
             </div>
         </div>
     </div>
     {{/each}}
+    <aside class="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
+            <div class="bg-light border rounded-3 p-1 h-100 sticky-top">
+                <div>Recent Searches</div>
+                <ul class="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
+                    {{!-- <li class="recentSearch">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/CSGOcoverMarch2020.jpg/220px-CSGOcoverMarch2020.jpg"></img>
+                        <p>Counter-Strike: Global Offensive</p>
+                    </li>
+                    <li class="recentSearch">Recent Search 1</li>
+                    <li class="recentSearch">Recent Search 2</li>
+                    <li class="recentSearch">Recent Search 3</li>
+                    <li class="recentSearch"></li>
+                </ul> --}}
+            </div>
+        </aside>
   </div>
 </div>
