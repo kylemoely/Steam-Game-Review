@@ -6,10 +6,11 @@ const {User} = require("../../models");
 
 router.get(["/login" ,"/signup"], (req, res) => {
 
-    console.log("in the get login");
+    console.log("in the get login/signup");
     if (req.session.logged_in) {
         return res.redirect("/");
     }
+   
    
     const path = req.path.split("/");
     console.log(path);
@@ -21,7 +22,7 @@ router.get(["/login" ,"/signup"], (req, res) => {
         return res.render("account", {
             title: "Login" ,
             title2: "Signup",
-            logged_in: true,
+            // logged_in: true,
         });
     }
 
@@ -62,18 +63,15 @@ router.post('/signup',async  (req, res) => {
           const validateUser = await validator(req,res);
           console.log(validateUser);
           if (validateUser){
-            res.redirect("/account/login");
-            return;
+            return res.status(400).redirect("/account/login");
+            
           }
           const userData = await User.create({
               username: username, 
               password: password,
           });
-          onsole.log("finished assign")
+          console.log("finished assign")
           return createSession(req, res,userData);
-      
-         
-          
         
         }
        catch (err) {
@@ -86,12 +84,13 @@ router.post("/login", async (req, res) => {
     
     try { 
         if (req.session.logged_in) {
-            return res.redirect("/");
+            return res.status(200).res.json({message: "authentification good"});
         }
 
         const userData = await validator(req,res);
-        if (!userData) {
-            return res.status(404).redirect("/account/signup");
+        console.log("the user data is" + userData);
+        if (userData === undefined || userData === null) {   
+            return res.status(401).json({error: "authentifiation"});
             
         }
 
@@ -99,8 +98,8 @@ router.post("/login", async (req, res) => {
         const validPassword = await userData.checkPassword(req.body.password);
         console.log(validPassword);
         console.log("validPassword");
-        if(!validPassword) {
-            return;
+        if(validPassword === undefined || validPassword === null || validPassword === false ) {
+            return res.status(401).json({error: "authentifiation"});
         }
 
         console.log("in the return post 3");
@@ -109,24 +108,24 @@ router.post("/login", async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        return res.status(400).json(error);
+        return res.status(401);
     }
 });
 
-// router.post("/logout", (req,res) => {
-//     console.log("logout");
-//     try {
-//     if (req.session.logged_in) {
-//         req.session.destroy(() => {
-//             req.status(204).end();
-//         });
-//     }
-//     }
-//     catch(error) {
-//         console.log(error);
-//         return;
-//     }
-// });
+router.post("/logout", (req,res) => {
+    console.log("logout");
+    try {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            return res.status(204).end();
+        });
+    }
+    }
+    catch(error) {
+        console.log(error);
+        return;
+    }
+});
 
 
 module.exports = router;
