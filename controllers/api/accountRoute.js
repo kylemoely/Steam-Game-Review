@@ -92,13 +92,13 @@ router.post("/login", async (req, res) => {
     
     try { 
         if (req.session.logged_in) {
-            return res.status(200).res.json({message: "authentification good"});
+            res.status(200).res.json({message: "authentification good"});
         }
 
         const userData = await validator(req,res);
         console.log("the user data is" + userData);
         if (userData === undefined || userData === null) {   
-            return res.status(401).json({error: "authentifiation"});
+           res.status(401).json({error: "authentifiation"});
             
         }
 
@@ -107,7 +107,7 @@ router.post("/login", async (req, res) => {
         console.log(validPassword);
         console.log("validPassword");
         if(validPassword === undefined || validPassword === null || validPassword === false ) {
-            return res.status(401).json({error: "authentifiation"});
+            res.status(401).json({error: "authentifiation"});
         }
 
         console.log("in the return post 3");

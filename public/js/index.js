@@ -16,7 +16,7 @@ const search = async (event) => {
     const response = await fetch(url, options);
     const games = await response.json();
     if(games.length===1){
-        location.href = `/${games[0].id}` // url should redirect to the specific game's page to show all reviews for that game
+        location.href = `/reviews/${games[0].id}` // url should redirect to the specific game's page to show all reviews for that game
     }else{
         // go to christian's page
     }
