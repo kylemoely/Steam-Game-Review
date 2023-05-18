@@ -9,4 +9,4 @@ const searchInput = document.getElementById('searchInput')
     window.location.href = ('/results')
     }
   });
-});
+
