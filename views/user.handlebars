@@ -38,11 +38,10 @@
           <section class="userOldReview">
             <div class="review-details">
               <h3>Game Name:{{review.title}}</h3><br>
-              <p>Reviewed By: {{review.username}}</p><br>
-              <p>Game Review:{{review.content}} </p><br>
-    
+              <img src={{review.imgURL}} alt="photo of review game">
+              <h2>Game Review:{{review.content}} </h2><br>
+              <h2>Reviewed By: {{review.username}}</h2><br>
             </div>
-            <img src={{review.imgURL}} alt="photo of review game">
           </section>
         </div>
       
