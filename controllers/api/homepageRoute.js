@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         for(let x=0;x<reviewData.length; x++){
             reviews.push(reviewData[x].get({plain: true}));
         }
-        res.render('home', {reviews, loggedIn: req.session.loggedIn, username: req.session.username});
+        res.render('home', {reviews, loggedIn: req.session.logged_in, username: req.session.username});
     } catch(err) {
         console.log(err);
         res.status(500).json(err);
