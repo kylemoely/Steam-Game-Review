@@ -65,7 +65,7 @@ router.post('/signup',async  (req, res) => {
           const validateUser = await validator(req,res);
           console.log(validateUser);
           if (validateUser){
-            return res.status(400).redirect("/account/login");
+            res.status(400).redirect("/account/login");
             
           }
           const userData = await User.create({
@@ -73,7 +73,13 @@ router.post('/signup',async  (req, res) => {
               password: password,
           });
           console.log("finished assign")
-          return createSession(req, res,userData);
+        //   return createSession(req, res,userData);
+
+        req.session.save(() => {
+            req.session.username = userData.username;
+            req.session.logged_in = true;
+            res.status(200).json(userData);
+        });
         
         }
        catch (err) {
@@ -105,8 +111,13 @@ router.post("/login", async (req, res) => {
         }
 
         console.log("in the return post 3");
-        return createSession(req, res,userData);
-        console.log("in the login post 4");
+        // return createSession(req, res,userData);
+        req.session.save(() => {
+            req.session.username = userData.username;
+            req.session.logged_in = true;
+            res.status(200).json(userData);
+        });
+
     }
     catch (error) {
         console.log(error);
