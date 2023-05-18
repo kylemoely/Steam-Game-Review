@@ -4,16 +4,30 @@
   <div class="card" style="width: 30rem;" >
   <div class="card-body">
     <div class="bg-warning p-2 text-white"><h4 class="card-title" >What would you like to do today?</h4></div>
-    <p class="card-text">Always a good day to post a review of a good game! And dont forget to lookup a review of that new game you heard about.</p>
+    <p class="card-text">Always a good day to post a review of a good game! And dont forget to lookup a review of that new game you heard about!</p>
     <button type="button" class="btn btn-primary">Post Review</button>
     <button type="button" class="btn btn-primary">Lookup Reviews</button>
     <div class="bigText"></div>
     
   </div>
 
-</div>
+  </div><br>
 
-<div style="align-items: center;"><h1 class="textHolder">This website holds Great Reviews on Steam Games. Thinking about playing a Steam game, come and checkout or reviews. Games are not cheap, why waist your money on a dud?!</h1></div>
+  <div style="align-items: center;"><h1 class="text-holder"> Thinking about playing a Steam game, come and checkout our reviews. This website holds Great Reviews on Steam Games. Games are not cheap, why waist your money on a dud?!</h1></div><br>
+
+  <div>
+    <h3 class="bg-primary p-2 text-white">Post a New Review</h3>
+      <div class="card" style="width: 81rem;">
+        <form action="/seeds/reviewData.js" method="get" name="newPostData">
+        <label for="gname">Game Title:</label>
+        <input type="text" id="gname" name="title"><br><br>
+        <label for="greview">Game Review:</label>
+        <input type="text" id="greview" name="content"><br><br>
+        <input type="submit" value="Submit Post">
+        {{!-- <input type="button" onclick="formSubmit()" value="Send form data!"> may have to use this instead --}}
+        </form>
+      </div>
+  </div><br>
 
   <div>
    <h3 class="bg-info p-2 text-white">My Posted Reviews</h3>
