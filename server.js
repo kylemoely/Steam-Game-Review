@@ -8,7 +8,6 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
 
-
 const PORT = process.env.PORT || 3021;
 const app = express();
 
@@ -31,7 +30,6 @@ app.set('views', './views');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(routes);
-
 
 sequelize.sync({force:false}).then(() => {
     app.listen(PORT, () => console.log(`Now listening at localhost:${PORT}`));

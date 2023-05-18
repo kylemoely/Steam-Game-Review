@@ -14,7 +14,6 @@ const seedDatabase = async () => {
   } catch (err) {
     console.error('Error inserting seed data:', err);
   }
-
   process.exit(0);
 };
 

@@ -4,8 +4,8 @@ const { Review } = require('../../models');
 // localhost:3021/reviews/:title
 router.get('/:title', async (req, res) => {
   try {
-    //const gameID = req.params.title
-    const gameID = 1172470;
+    const gameID = req.params.title
+    
     const options = {
       method: 'GET',
       headers: {
@@ -36,7 +36,6 @@ router.get('/:title', async (req, res) => {
     const reviewData = await Review.findAll({
       order: [['createdAt', 'DESC']]
     });
-
     const reviews = reviewData.map(review => review.get({ plain: true }));
 
     res.render('review', { reviews, title, imgURL });

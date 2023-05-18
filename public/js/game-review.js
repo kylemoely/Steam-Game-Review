@@ -8,7 +8,6 @@ const reviewSubmission = async (event) => {
   const titleValue = reviewForm.dataset.title;
   const imgURLValue = reviewForm.dataset.imgurl;
 
-
   const reviewValue = await fetch('/reviews/:title', {
     method: 'POST',
     body: JSON.stringify({
@@ -27,7 +26,6 @@ const reviewSubmission = async (event) => {
   }
 };
 
-// Attach event listener to each post-review button
 postReviewButtons.forEach((button) => {
   button.addEventListener('click', reviewSubmission);
 });
