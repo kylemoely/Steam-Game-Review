@@ -8,7 +8,7 @@ router.get(["/login" ,"/signup"], (req, res) => {
 
     console.log("in the get login/signup");
     if (req.session.logged_in) {
-        return res.redirect("/");
+        return res.redirect(`/users/${req.session.username}`);
     }
    
    
@@ -50,7 +50,7 @@ function createSession (req, res,userData) {
     req.session.save(() => {
         req.session.username = userData.username;
         req.session.logged_in = true;
-        return res.status(200).redirect('/');
+        return res.status(200).redirect(`/users/${req.session.username}`);
     });
 }
 

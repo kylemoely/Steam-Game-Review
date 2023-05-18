@@ -24,3 +24,4 @@ const search = async (event) => {
 
 formEl.addEventListener('submit', search);
 
+document.getElementById
