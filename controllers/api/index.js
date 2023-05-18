@@ -13,7 +13,7 @@ router.use('/reviews', reviewRoutes);
 
 router.use('/results', resultRoutes);
 
-// router.use('/users', userRoutes);
+router.use('/users', userRoutes);
 
 module.exports = router;
 
