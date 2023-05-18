@@ -52,7 +52,7 @@ function createSession (req, res,userData) {
     req.session.save(() => {
         req.session.username = userData.username;
         req.session.logged_in = true;
-        return res.status(200).redirect(`/users/${req.session.username}`);
+        return res.status(200).redirect(`/users/${username}`);
     });
 }
 
@@ -114,19 +114,19 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.post("/logout", (req,res) => {
-    console.log("logout");
-    try {
-    if (req.session.logged_in) {
-        req.session.destroy(() => {
-            return res.status(204).end();
-        });
-    }
-    }
-    catch(error) {
-        return res.status(404).end();
-    }
-});
+// router.post("/logout", (req,res) => {
+//     console.log("logout");
+//     try {
+//     if (req.session.logged_in) {
+//         req.session.destroy(() => {
+//             return res.status(204).end();
+//         });
+//     }
+//     }
+//     catch(error) {
+//         return res.status(404).end();
+//     }
+// });
 
 
 module.exports = router;

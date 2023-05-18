@@ -21,7 +21,7 @@ const formSubmission =  async (event) => {
         console.log(response);
         if (response.ok && response.status !== 401) {
             alert("Successfuly signed in");
-            document.location.replace(`/users/${req.session.username}`);
+            document.location.replace(`/users/${username}`);
         }
         else{
             alert("Could not login");
