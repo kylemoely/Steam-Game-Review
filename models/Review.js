@@ -11,6 +11,10 @@ Review.init(
             primaryKey: true,
             autoIncrement: true
         },
+        gameID: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false,

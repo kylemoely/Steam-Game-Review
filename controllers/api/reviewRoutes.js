@@ -34,6 +34,7 @@ router.get('/:title', async (req, res) => {
     const imgURL = resultTwo[0].image_thumbnail
 
     const reviewData = await Review.findAll({
+      where: {id: gameID},
       order: [['createdAt', 'DESC']]
     });
     const reviews = reviewData.map(review => review.get({ plain: true }));
@@ -46,7 +47,13 @@ router.get('/:title', async (req, res) => {
 
 router.post('/:title', async (req, res) => {
   try {
-    const reviewData = await Review.create(req.body);
+    const reviewData = await Review.create({
+      gameID: req.params.title,
+      title: req.body.title,
+      content: req.body.content,
+      imgURL: req.body.imgURL,
+      username: req.body.username
+    });
     res.status(200).json(reviewData);
   } catch (err) {
     res.status(400).json(err);
