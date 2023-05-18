@@ -20,8 +20,7 @@ const formSubmission =  async (event) => {
         });
         console.log(response);
         if (response.ok && response.status !== 401) {
-            alert("Successfuly signed in");
-            document.location.replace(`/users/${req.session.username}`);
+            location.href=`/users/${username}`;
         }
         else{
             alert("Could not login");

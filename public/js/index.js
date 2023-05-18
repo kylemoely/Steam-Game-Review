@@ -1,9 +1,4 @@
-const formEl = document.getElementById('formEl');
-const searchInput = document.getElementById('searchInput');
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    let searchInput = document.querySelector('input')
 
     searchInput.addEventListener("keydown", function(event) {
     if (event.key === 'Enter') {
