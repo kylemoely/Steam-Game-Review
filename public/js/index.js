@@ -1,4 +1,5 @@
-const searchInput = document.getElementById('searchInput');
+
+const searchInput = document.getElementById('searchInput')
 
     searchInput.addEventListener("keydown", function(event) {
     if (event.key === 'Enter') {
@@ -9,3 +10,4 @@ const searchInput = document.getElementById('searchInput');
     window.location.href = ('/results')
     }
   });
+
