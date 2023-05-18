@@ -34,7 +34,7 @@ router.get('/:title', async (req, res) => {
     const imgURL = resultTwo[0].image_thumbnail
 
     const reviewData = await Review.findAll({
-      where: {id: gameID},
+      where: {gameID: gameID},
       order: [['createdAt', 'DESC']]
     });
     const reviews = reviewData.map(review => review.get({ plain: true }));
