@@ -1,37 +1,39 @@
-{{#if reviews.length}}
 <div class="container">
 <!-- Button trigger modal -->
+
 <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px; margin-bottom: 20px;">
   <button type="button" class="btn btn-primary justify-content-end" data-bs-toggle="modal" data-bs-target="#write-review">
     Write a review
   </button>
 </div>
-
 <!-- Modal -->
-{{#each reviews as |review|}}
-<div class="modal fade new-game-review" id="write-review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="write-review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="game-title">{{review.title}}</h1>
+        <h1 class="modal-title fs-5" id="game-title">Write your review!</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="review-form">
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Review:</label>
-            <textarea class="form-control" id="review-text"></textarea>
+            <label for="username-text" class="col-form-label">Username:</label>
+            <textarea class="form-control" id="username-text" style="height: 40px;"></textarea>
+            <label for="review-text" class="col-form-label">Review:</label>
+            <textarea class="form-control" id="review-text" style="height: 100px;"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Post review</button>
+        <button type="submit" class="btn btn-primary post-review-btn">Post review</button>
       </div>
     </div>
   </div>
 </div>
-{{/each}}
+
+{{#if reviews.length}}
   <table class="table align-middle mb-0 bg-white game-review-list">
     <thead class="bg-light">
       <tr>
@@ -42,8 +44,8 @@
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
-      {{#each reviews as |review|}}
+    {{#each reviews as |review|}}
+    <tbody id="review-{{review.id}}">
       <tr>
         <td>
           <div class="d-flex align-items-center">
@@ -71,11 +73,11 @@
           </a>
         </td>
       </tr>
-      {{/each}}
     </tbody>
+    {{/each}}
   </table>
 </div>
 {{else}}
   <p>No reviews found.</p>
 {{/if}}
-<script src="../public/js/game-review.js"></script>
+<script src="/js/game-review.js"></script>
