@@ -44,6 +44,8 @@ async function validator (req,res) {
     console.log(userData)
 
     return userData;
+
+    
 }
 
 function createSession (req, res,userData) {
