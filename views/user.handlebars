@@ -32,20 +32,21 @@
   <div>
    <h3 class="bg-info p-2 text-white">My Posted Reviews</h3>
      <div class="card" style="width: 81rem;">
+      {{#each stringfyReviewData as |review|}}
         <div class="repeater"> {{! might need a { {#each } } here or somewhere near in code--}}
           {{!-- <p class="h6">This is where the post from the current User goes. How I am to get it here no Idea.</p> --}}
           <section class="userOldReview">
             <div class="review-details">
-              <h3>Game Name:{{review.title}}</h3>
-              <p>Reviewed By: {{review.username}}</p>
-              <p>Game Review:{{review.content}} </p>
+              <h3>Game Name:{{review.title}}</h3><br>
+              <p>Reviewed By: {{review.username}}</p><br>
+              <p>Game Review:{{review.content}} </p><br>
     
             </div>
             <img src="/images/{{review.imgURL}}" alt="photo of review game">
           </section>
         </div>
-        
-
+      
+        {{/each}}
       </div>
 
   </div>

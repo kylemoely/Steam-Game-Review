@@ -4,14 +4,16 @@ const {Review} = require("../../models");
 router.get('/:username', async (req, res) => {
   try {
     const reviewData = await Review.findAll({where:{username:req.params.username}});
-    console.log(reviewData)
-    res.status(200).render("user", {reviewData})
+    // console.log(reviewData)
+    const stringfyReviewData = reviewData.map((review) => review.get({plain: true}));
+    console.log(stringfyReviewData)
+    res.status(200).render("user", {stringfyReviewData})
   } catch (err) {
     res.status(500).json(err);
   }
 
 })
-// localhost:3021/users/
+// localhost:3021/users/:username
 router.post('/:username', async (req,res) => {
     try {
         const {username} = req.params;

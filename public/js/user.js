@@ -1,27 +1,27 @@
-const reviewBtn = document.querySelector('[id="lookupReviewBtn"]');
+const reviewBtn = document.querySelector('#lookupReviewBtn');
 const newPostDataEl = document.querySelector('[name="newPostData"]');
-const submitBtnE = document.querySelector('[id="submitBtn"]');
+
 const submitBtnEl = document.querySelector('#submitBtn');
 const userOldReviewEl= document.querySelector('[class="userOldReview"]');
 
 const postSubmission = async (event) => {
     event.preventDefault();
-    const title= document.querySelector('#gname')
-    const content= document.querySelector('#greview')
+    const title= document.querySelector('#gname').value.trim();
+    const content= document.querySelector('#greview').value.trim();
 
     if (title && content) {
-        const response = await fetch('/', {
+        const response = await fetch(`/review`, {
             method: "POST",
             body: JSON.stringify({
-              title: title,
-              content: content,  
+              title, //title: before?
+              content, //content: before?  
             }),
-            headers: {"content-type": "application/json"},
+            headers: {"Content-Type": "application/json"},
         });
         console.log(response);
         if (response.ok) {
             alert("Succesfully posted review");
-            document.location.replace("/");
+            // document.location.replace("/");
 
         }
         else{
@@ -30,4 +30,4 @@ const postSubmission = async (event) => {
     }
 };
 
-reviewBtn.addEventListener("submit",postSubmission)
+submitBtnEl.addEventListener("submit",postSubmission)
