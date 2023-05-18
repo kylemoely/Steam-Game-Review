@@ -1,3 +1,5 @@
+// const { request } = require("http");
+
 const userForm = document.querySelector("#userForm");
 // const submitEl = document.getElementById("submitBtn");
 
@@ -17,12 +19,13 @@ const formSubmission =  async (event) => {
             headers: {"content-type": "application/json"},
         });
         console.log(response);
-        if (response.ok) {
+        if (response.ok && response.status !== 401) {
             alert("Successfuly signed in");
             document.location.replace("/");
         }
         else{
             alert("Could not login");
+    
         }
     }
 };

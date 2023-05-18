@@ -1,10 +1,7 @@
-const formEl = document.getElementById('formEl');
-const searchInput = document.getElementById('searchInput');
+const sidebar = document.getElementById('sidebar');
 
-
-const search = async (event) => {
-    event.preventDefault();
-    const gameToSearch = searchInput.value.trim();
+const searchRecent = async (event) => {
+    const gameToSearch = event.target.innerHTML;
     let options = {
         method: 'GET',
         headers: {
@@ -22,5 +19,17 @@ const search = async (event) => {
     }
 }
 
-formEl.addEventListener('submit', search);
+const loadSearches = () => {
+    const storage = Object.keys(localStorage);
+    if(storage.length>0){
+        for(let x=0;x<storage.length;x++){
+            const recSearch = document.createElement('li');
+            recSearch.setAttribute('class', 'recentSearch');
+            recSearch.innerHTML = storage[x];
+            sidebar.appendChild(recSearch); 
+            recSearch.addEventListener('click', searchRecent);
+        }
+    }
+}
 
+loadSearches();
