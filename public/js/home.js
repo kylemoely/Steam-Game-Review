@@ -12,11 +12,8 @@ const searchRecent = async (event) => {
     let url = `https://steam-game-search-and-details.p.rapidapi.com/game_search/search_like/title/?search_value=${gameToSearch}`
     const response = await fetch(url, options);
     const games = await response.json();
-    if(games.length===1){
-        location.href = `/${games[0].id}` // url should redirect to the specific game's page to show all reviews for that game
-    }else{
-        // go to christian's page
-    }
+    location.href = `/${games[0].id}` // url should redirect to the specific game's page to show all reviews for that game
+
 }
 
 const loadSearches = () => {
