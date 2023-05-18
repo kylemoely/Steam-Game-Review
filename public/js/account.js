@@ -1,7 +1,5 @@
-// const { request } = require("http");
 
 const userForm = document.querySelector("#userForm");
-
 
 const formSubmission =  async (event) => {
     event.preventDefault();
@@ -18,13 +16,14 @@ const formSubmission =  async (event) => {
             }),
             headers: {"content-type": "application/json"},
         });
-        console.log(response);
+        
         if (response.ok && response.status !== 401) {
+
             location.href=`/users/${username}`;
+
         }
         else{
             alert("Could not login");
-    
         }
     }
 };
