@@ -1,3 +1,11 @@
+const saveSearch = (game) => {
+    const storageItems = Object.keys(localStorage);
+    if(storageItems.length>9){
+        localStorage.removeItem(storageItems[storageItems.length-1]);
+    }
+    localStorage.setItem(game, 'true');
+}
+
 function fetchcall(searchQuery) {
     let options = {
         method: 'GET',
@@ -37,14 +45,17 @@ fetch(url, options)
       card.appendChild(image);
       mainBox.appendChild(card);
 
+
       card.addEventListener('click', function(event) {
         console.log('Clicked card:', card);
-        let newUrl = `https://localhost:3021/${data[i].game_id}` 
+        saveSearch (data[i].title)
+        let newUrl = `/${data[i].game_id}` 
         window.location.href = newUrl
       });
     }
   });
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     let searchInput = document.querySelector('input')
 
