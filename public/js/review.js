@@ -1,44 +1,31 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const postReviewButtons = document.querySelectorAll('.post-review-btn');
 
-class Review extends Model {}
+const reviewSubmission = async (event) => {
+  event.preventDefault();
+  const reviewForm = document.getElementById('review-form')
+  const contentValue = document.getElementById('review-text').value;
+  const usernameValue = document.getElementById('username-text').value;
+  const titleValue = reviewForm.dataset.title;
+  const imgURLValue = reviewForm.dataset.imgurl;
 
-Review.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: '',
-        },
-        content: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        username: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'user',
-                key: 'username'
-            }
-        },
-        imgURL: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: '',
-        }
-    },
-    {
-        sequelize,
-        timestamps: true,
-        freezeTableName: true,
-        modelName: 'review'
-    }
-);
+  const reviewValue = await fetch('/reviews/:title', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: titleValue,
+      content: contentValue,
+      username: usernameValue,
+      imgURL: imgURLValue
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-module.exports = Review;
+  if (reviewValue.ok) {
+    location.href = location.href;
+  } else {
+    alert('Review failed to post');
+  }
+};
+
+postReviewButtons.forEach((button) => {
+  button.addEventListener('click', reviewSubmission);
+});
