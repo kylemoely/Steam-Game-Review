@@ -32,16 +32,14 @@ router.get('/:title', async (req, res) => {
     const responseTwo = await fetch(urlTwo, optionsTwo);
     const resultTwo = await responseTwo.json();
     const imgURL = resultTwo[0].image_thumbnail
-    console.log(imgURL)
 
-    // Retrieve review data using Review.findAll()
     const reviewData = await Review.findAll({
       order: [['createdAt', 'DESC']]
     });
 
     const reviews = reviewData.map(review => review.get({ plain: true }));
 
-    res.render('review', { reviews });
+    res.render('review', { reviews, title, imgURL });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -49,17 +47,10 @@ router.get('/:title', async (req, res) => {
 
 router.post('/:title', async (req, res) => {
   try {
-    const { title, content, username, imgURL } = req.body;
-    console.log(req.body)
-    const reviewData = await Review.create({
-      title,
-      content,
-      username,
-      imgURL,
-    });
+    const reviewData = await Review.create(req.body);
     res.status(200).json(reviewData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 

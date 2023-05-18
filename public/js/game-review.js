@@ -2,17 +2,20 @@ const postReviewButtons = document.querySelectorAll('.post-review-btn');
 
 const reviewSubmission = async (event) => {
   event.preventDefault();
-
+  const reviewForm = document.getElementById('review-form')
   const contentValue = document.getElementById('review-text').value;
   const usernameValue = document.getElementById('username-text').value;
-  console.log(usernameValue);
-  console.log(contentValue);
+  const titleValue = reviewForm.dataset.title;
+  const imgURLValue = reviewForm.dataset.imgurl;
+
 
   const reviewValue = await fetch('/reviews/:title', {
     method: 'POST',
     body: JSON.stringify({
+      title: titleValue,
       content: contentValue,
-      username: usernameValue
+      username: usernameValue,
+      imgURL: imgURLValue
     }),
     headers: { 'Content-Type': 'application/json' },
   });

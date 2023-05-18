@@ -12,11 +12,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="game-title">Write your review!</h1>
+        <h1 class="modal-title fs-5" id="game-title">Write your review for {{title}}!</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="review-form">
+        <form id="review-form" data-title={{title}} data-imgurl={{imgURL}} data-id={{id}}>
           <div class="mb-3">
             <label for="username-text" class="col-form-label">Username:</label>
             <textarea class="form-control" id="username-text" style="height: 40px;"></textarea>
@@ -45,11 +45,11 @@
       </tr>
     </thead>
     {{#each reviews as |review|}}
-    <tbody id="review-{{review.id}}">
+    <tbody {{id}}>
       <tr>
         <td>
           <div class="d-flex align-items-center">
-            <img src= {{review.imgURL}}>
+            <img src={{imgURL}}>
             <div class="ms-3">
               <p class="fw-bold mb-1">{{review.username}}</p>
             </div>
