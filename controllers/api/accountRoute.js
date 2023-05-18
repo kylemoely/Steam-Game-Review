@@ -22,14 +22,13 @@ router.get(["/login" ,"/signup"], (req, res) => {
         return res.render("account", {
             title: "Login" ,
             title2: "Signup",
-            // logged_in: true,
         });
     }
 
     else if(path[1]== "signup"){
         return res.render("account", {
             title: "Signup",
-            title2: "Login"
+            title2: "Login",
         });
     }
 });
@@ -57,6 +56,7 @@ function createSession (req, res,userData) {
 
 router.post('/signup',async  (req, res) => {
     try {
+        console.log("im in the log out post");
         console.log("inside the sign up post");
           const { username, password } = req.body;
       
@@ -122,8 +122,7 @@ router.post("/logout", (req,res) => {
     }
     }
     catch(error) {
-        console.log(error);
-        return;
+        return res.status(404).end();
     }
 });
 

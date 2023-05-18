@@ -1,7 +1,7 @@
 // const { request } = require("http");
 
 const userForm = document.querySelector("#userForm");
-// const submitEl = document.getElementById("submitBtn");
+
 
 const formSubmission =  async (event) => {
     event.preventDefault();
