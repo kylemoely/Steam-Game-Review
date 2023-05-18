@@ -16,15 +16,6 @@
     width:inherit;
 }
 
-.recentSearch img{
-    height:150px;
-    width:110px;
-    border-radius: inherit;
-}
-
-.recentSearch p{
-    word-break: break-all;
-    font-size:20px;
+#recent{
     text-align:center;
-    width:min-content;
 }
