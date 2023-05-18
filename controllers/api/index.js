@@ -9,9 +9,9 @@ router.use('/', homeRoutes);
 
 router.use('/account', accountRoutes);
 
-// router.use('/reviews', reviewRoutes);
+router.use('/reviews', reviewRoutes);
 
-// router.use('/results', resultRoutes);
+router.use('/results', resultRoutes);
 
 // router.use('/users', userRoutes);
 
