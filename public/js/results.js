@@ -5,8 +5,12 @@ const saveSearch = (game) => {
     }
     localStorage.setItem(game, 'true');
 }
+window.onload = function () {
+  let searchResults = sessionStorage.getItem('1')
+  fetchcall(searchResults)
+}
 
-function fetchcall(searchQuery) {
+function fetchcall(searchResults) {
     let options = {
         method: 'GET',
         headers: {
@@ -15,7 +19,7 @@ function fetchcall(searchQuery) {
     
         }
     }
-    let url = `https://steam-game-search-and-details.p.rapidapi.com/game_search/search_like/title/?search_value=${searchQuery}`
+    let url = `https://steam-game-search-and-details.p.rapidapi.com/game_search/search_like/title/?search_value=${searchResults}`
 
 
 fetch(url, options)
@@ -49,24 +53,10 @@ fetch(url, options)
       card.addEventListener('click', function(event) {
         console.log('Clicked card:', card);
         saveSearch (data[i].title)
-        let newUrl = `/${data[i].game_id}` 
+        let newUrl = `/reviews/${data[i].game_id}` 
         window.location.href = newUrl
       });
     }
   });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    let searchInput = document.querySelector('input')
-
-    searchInput.addEventListener("keydown", function(event) {
-    if (event.key === 'Enter') {
-    event.preventDefault()
-    let searchQuery = searchInput.value
-    console.log("Search query:", searchQuery);
-    fetchcall(searchQuery)
-    }
-  });
-});
-
 

@@ -18,8 +18,9 @@ const formSubmission =  async (event) => {
         });
         
         if (response.ok && response.status !== 401) {
-            alert("Successfuly signed in");
-            document.location.replace(`/users/${username}`);
+
+            location.href=`/users/${username}`;
+
         }
         else{
             alert("Could not login");

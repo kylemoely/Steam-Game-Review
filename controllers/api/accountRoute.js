@@ -55,7 +55,7 @@ router.post('/signup',async  (req, res) => {
       
           const validateUser = await validator(req,res);
           if (validateUser){
-            return res.status(400).redirect("/account/login");
+            res.status(400).redirect("/account/login");
             
           }
           const userData = await User.create({
@@ -63,7 +63,14 @@ router.post('/signup',async  (req, res) => {
               password: password,
           });
 
-          return createSession(req, res,userData);
+          console.log("finished assign")
+        //   return createSession(req, res,userData);
+
+        req.session.save(() => {
+            req.session.username = userData.username;
+            req.session.logged_in = true;
+            res.status(200).json(userData);
+        });
         
         }
        catch (err) {
@@ -76,21 +83,27 @@ router.post("/login", async (req, res) => {
     
     try { 
         if (req.session.logged_in) {
-            return res.status(200).res.json({message: "authentification good"});
+            res.status(200).res.json({message: "authentification good"});
         }
 
         const userData = await validator(req,res);
         if (userData === undefined || userData === null) {   
-            return res.status(401).json({error: "authentifiation"});
+           res.status(401).json({error: "authentifiation"});
             
         }
         
         const validPassword = await userData.checkPassword(req.body.password);
         if(validPassword === undefined || validPassword === null || validPassword === false ) {
-            return res.status(401).json({error: "authentifiation"});
+            res.status(401).json({error: "authentifiation"});
         }
 
-        return createSession(req, res,userData);
+        console.log("in the return post 3");
+        // return createSession(req, res,userData);
+        req.session.save(() => {
+            req.session.username = userData.username;
+            req.session.logged_in = true;
+            res.status(200).json(userData);
+        });
     }
     catch (error) {
         return res.status(401);
