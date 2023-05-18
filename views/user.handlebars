@@ -6,7 +6,7 @@
     <div class="bg-warning p-2 text-white"><h4 class="card-title" >What would you like to do today?</h4></div>
     <p class="card-text">Always a good day to post a review of a good game! And dont forget to lookup a review of that new game you heard about!</p>
     <button type="button" class="btn btn-primary">Post Review</button>
-    <button type="button" class="btn btn-primary">Lookup Reviews</button>
+    <button type="button" class="btn btn-primary" id="lookupReviewBtn">Lookup Reviews</button>
     <div class="bigText"></div>
     
   </div>
@@ -20,10 +20,10 @@
       <div class="card" style="width: 81rem;">
         <form action="/seeds/reviewData.js" method="get" name="newPostData">
         <label for="gname">Game Title:</label>
-        <input type="text" id="gname" name="title"><br><br>
+        <input type="text" id="gname" name="titleToPost"><br><br>
         <label for="greview">Game Review:</label>
-        <input type="text" id="greview" name="content"><br><br>
-        <input type="submit" value="Submit Post">
+        <input type="text" id="greview" name="contentToPost"><br><br>
+        <input type="submit" value="Submit Post" id="submitBtn">
         {{!-- <input type="button" onclick="formSubmit()" value="Send form data!"> may have to use this instead --}}
         </form>
       </div>
@@ -34,7 +34,7 @@
      <div class="card" style="width: 81rem;">
         <div class="repeater"> {{! might need a { {#each } } here or somewhere near in code--}}
           {{!-- <p class="h6">This is where the post from the current User goes. How I am to get it here no Idea.</p> --}}
-          <section class="review">
+          <section class="userOldReview">
             <div class="review-details">
               <h3>Game Name:{{review.title}}</h3>
               <p>Reviewed By: {{review.username}}</p>
