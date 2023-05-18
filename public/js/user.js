@@ -1,12 +1,13 @@
 const reviewBtn = document.querySelector('[id="lookupReviewBtn"]');
-const newPostDataEl = document.querySelector('[name="newPostData"]')
-
-const userOldReviewEl= document.querySelector('[class="userOldReview"]')
+const newPostDataEl = document.querySelector('[name="newPostData"]');
+const submitBtnE = document.querySelector('[id="submitBtn"]');
+const submitBtnEl = document.querySelector('#submitBtn');
+const userOldReviewEl= document.querySelector('[class="userOldReview"]');
 
 const postSubmission = async (event) => {
     event.preventDefault();
-    const title= document.querySelector('[name="titleToPost"]')
-    const content= document.querySelector('[name="contentToPost"]')
+    const title= document.querySelector('#gname')
+    const content= document.querySelector('#greview')
 
     if (title && content) {
         const response = await fetch('/', {
