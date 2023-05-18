@@ -8,7 +8,7 @@ const reviewSubmission = async (event) => {
   const titleValue = reviewForm.dataset.title;
   const imgURLValue = reviewForm.dataset.imgurl;
 
-  const reviewValue = await fetch('/reviews/:title', {
+  const reviewValue = await fetch(location.href, {
     method: 'POST',
     body: JSON.stringify({
       title: titleValue,

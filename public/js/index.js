@@ -1,3 +1,4 @@
+
 const searchInput = document.getElementById('searchInput')
 
     searchInput.addEventListener("keydown", function(event) {
