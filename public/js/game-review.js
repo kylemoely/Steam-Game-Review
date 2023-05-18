@@ -2,24 +2,25 @@ const postReviewButtons = document.querySelectorAll('.post-review-btn');
 
 const reviewSubmission = async (event) => {
   event.preventDefault();
-  
+
   const contentValue = document.getElementById('review-text').value;
   const usernameValue = document.getElementById('username-text').value;
   console.log(usernameValue);
   console.log(contentValue);
 
   const reviewValue = await fetch('/reviews/:title', {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify({
       content: contentValue,
       username: usernameValue
     }),
     headers: { 'Content-Type': 'application/json' },
-  })
-  if(reviewValue.ok) {
-      alert("Your review has been posted!");
+  });
+
+  if (reviewValue.ok) {
+    location.href = location.href;
   } else {
-      alert('Review failed to post');
+    alert('Review failed to post');
   }
 };
 
