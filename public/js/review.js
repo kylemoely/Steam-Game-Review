@@ -14,6 +14,7 @@ Review.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue: '',
         },
         content: {
             type: DataTypes.TEXT,
@@ -28,7 +29,8 @@ Review.init(
         },
         imgURL: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: '',
         }
     },
     {
