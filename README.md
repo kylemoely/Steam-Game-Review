@@ -39,4 +39,4 @@ Licensed under the [MIT](http://choosealicense.com/licenses/mit/) license.
 
 [The URL of the GitHub Repository.](https://github.com/kylemoely/Steam-Game-Review.git)
 
-[The URL of the deployed application.](https://video-review.herokuapp.com/)
+[The URL of the deployed application.](https://stark-beyond-75497.herokuapp.com/)
