@@ -8,9 +8,7 @@ const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
 const routes = require('./controllers');
 
-
-
-const PORT = process.env.PORT || 3072;
+const PORT = process.env.PORT || 3074;
 
 
 const app = express();

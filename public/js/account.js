@@ -6,7 +6,6 @@ const formSubmission =  async (event) => {
     const username = document.querySelector("#userNameInput").value.trim();
     const password = document.querySelector("#passwordInput").value.trim();
 
-
     if (username && password) {
         const response = await fetch("/account/" + document.querySelector("#title").innerText.toLowerCase(), {
             method: "POST",
@@ -24,8 +23,7 @@ const formSubmission =  async (event) => {
         }
         else{
             alert("Could not login");
-        }
-    }
+        }}
 };
 
 userForm.addEventListener("submit",formSubmission);
