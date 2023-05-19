@@ -64,7 +64,6 @@ router.post('/signup',async  (req, res) => {
           });
 
           console.log("finished assign")
-        //   return createSession(req, res,userData);
 
         req.session.save(() => {
             req.session.username = userData.username;
@@ -97,8 +96,6 @@ router.post("/login", async (req, res) => {
             res.status(401).json({error: "authentifiation"});
         }
 
-        console.log("in the return post 3");
-        // return createSession(req, res,userData);
         req.session.save(() => {
             req.session.username = userData.username;
             req.session.logged_in = true;
