@@ -18,6 +18,19 @@ router.get('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
+});
+
+router.get('/dashboard', (req, res) => {
+    try{
+        if(req.session.loggedIn && req.session.username){
+            res.redirect(`/${req.session.username}`);
+        } else{
+            res.redirect('/login');
+        }
+    } catch (err){
+        console.log(err);
+        res.status(500).json(err);
+    }
 })
 
 
